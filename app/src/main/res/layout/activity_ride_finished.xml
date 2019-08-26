@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_main"
+        tools:context="com.fahim.mevronrider.views.activity.RideFInishedActivity">
+
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+            <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="30dp">
+
+
+                <TextView
+                        android:id="@+id/tvLabel"
+                        style="@style/large_text"
+                        android:text="Ride Finished"/>
+
+
+                <TextView
+                        android:id="@+id/tvCompleteRide"
+
+                        android:layout_below="@+id/tvLabel"
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:lineSpacingMultiplier="1.25"
+                        style="@style/PleaseTellUsYour"
+                        android:text="Please tell us your email and select a region where you want to become a driver."
+                        android:width="300dp"/>
+                <RelativeLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/tvCompleteRide"
+                        android:id="@+id/viewRL">
+
+
+                    <View
+                            android:layout_width="100dp"
+                            android:layout_height="2dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentLeft="true"
+                            style="@style/horizontal_line"/>
+
+
+                    <TextView
+                            style="@style/regulattv"
+                            android:text="Trip Details"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                    />
+
+                    <View
+                            android:layout_width="100dp"
+                            android:layout_height="2dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            style="@style/horizontal_line"/>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:id="@+id/labelResponse"
+                                android:layout_below="@+id/viewRL">
+
+
+                    <TextView
+
+                            style="@style/hintColor"
+                            android:text="RIDE DISTANCE"
+                    />
+
+
+                    <TextView
+                            android:id="@+id/eta"
+                            style="@style/hintColor"
+                            android:text="ETA"
+                            android:layout_marginLeft="120dp"/>
+
+
+                    <TextView
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="48dp"
+                            style="@style/hintColor"
+
+                            android:text="EARNED"/>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="16dp"
+                                android:id="@+id/rlResponse"
+                                android:layout_below="@+id/labelResponse">
+
+
+                    <TextView
+                            android:id="@+id/tvRideDistance"
+                            style="@style/ride_response"
+                            android:text="32"
+                    />
+
+                    <TextView
+
+                            style="@style/regulattv"
+                            android:layout_alignParentBottom="true"
+                            android:text="km"
+                            android:layout_toRightOf="@+id/tvRideDistance"
+                    />
+
+
+                    <TextView
+                            android:id="@+id/tvRideEta"
+                            style="@style/ride_response"
+                            android:text="13"
+                            android:layout_marginLeft="120dp"/>
+
+
+                    <TextView
+                            android:layout_toRightOf="@+id/tvRideEta"
+                            style="@style/regulattv"
+                            android:text="mins"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"/>
+
+                    <TextView
+                            android:id="@+id/tvRidePrice"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="48dp"
+                            style="@style/ride_response"
+                            android:text="28"/>
+
+
+                    <TextView
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            style="@style/regulattv"
+                            android:layout_marginRight="24dp"
+                            android:text="usd"/>
+
+
+                </RelativeLayout>
+
+
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_marginTop="16dp"
+                              android:layout_below="@+id/rlResponse"
+                              android:id="@+id/llPick">
+
+
+                    <ImageView android:layout_width="32dp"
+                               android:layout_height="32dp"
+                               android:src="@drawable/icon_passenger_pin"/>
+
+
+                    <TextView
+                            style="@style/personTv"
+                            android:layout_marginLeft="32dp"
+                            android:text="pickup location"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_marginTop="16dp"
+                              android:layout_below="@+id/llPick"
+                              android:id="@+id/lldrop">
+
+
+                    <ImageView android:layout_width="32dp"
+                               android:layout_height="32dp"
+                               android:src="@drawable/icon_destination_pin"
+                    />
+
+
+                    <TextView
+                            style="@style/personTv"
+                            android:layout_marginLeft="32dp"
+                            android:text="destination location"/>
+
+
+                </LinearLayout>
+
+
+                <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                          android:layout_width="match_parent"
+                          android:layout_height="128dp"
+                          android:id="@+id/map"
+                          android:layout_marginTop="16dp"
+                          android:layout_centerHorizontal="true"
+                          android:layout_below="@+id/lldrop"
+                          android:name="com.google.android.gms.maps.SupportMapFragment"/>
+                <RelativeLayout
+                        android:id="@+id/rll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/map"
+                >
+
+
+                    <View
+                            android:layout_width="100dp"
+                            android:layout_height="2dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentLeft="true"
+                            style="@style/horizontal_line"/>
+
+
+                    <TextView
+                            style="@style/regulattv"
+                            android:text="Mevron Tip"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                    />
+
+                    <View
+                            android:layout_width="100dp"
+                            android:layout_height="2dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            style="@style/horizontal_line"/>
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                        android:id="@+id/rlll" android:layout_width="100dp"
+                        android:layout_height="80dp"
+                        android:layout_below="@+id/rll"
+                        android:layout_marginTop="16dp"
+                        android:layout_centerHorizontal="true">
+
+                    <TextView
+                            android:id="@+id/tvMevronTip"
+
+                            android:textSize="56dp"
+                            style="@style/large_text"
+                            android:text="32"
+                    />
+
+                    <TextView
+
+                            style="@style/personTv"
+                            android:layout_alignParentBottom="true"
+                            android:text="usd"
+                            android:layout_toRightOf="@+id/tvMevronTip"
+                    />
+                </RelativeLayout>
+
+
+                <Button
+                        android:id="@+id/btnCompleteRide"
+                        android:layout_below="@+id/rlll"
+                        style="@style/main_btn_yellow"
+                        android:layout_marginTop="16dp"
+                        android:layout_alignParentBottom="true"
+                        android:text="Complete Ride"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

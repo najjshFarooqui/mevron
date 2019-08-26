@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.fahim.mevronrider.views.fragments.FragmentPhone">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:background="@drawable/bg_main">
+
+
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginBottom="30dp">
+
+
+            <TextView
+                    android:id="@+id/becomeDriverTv"
+                    android:height="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:lineSpacingMultiplier="1.56"
+                    style="@style/BecomeADriver"
+                    android:text="Your Phone Number"/>
+
+
+            <TextView
+                    android:id="@+id/pleaeTellUs"
+
+                    android:layout_below="@+id/becomeDriverTv"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:lineSpacingMultiplier="1.25"
+                    style="@style/PleaseTellUsYour"
+                    android:text="Please add your phone number for verification"
+                    android:width="300dp"/>
+
+
+            <EditText
+                    android:id="@+id/etPhoneNumber"
+                    android:inputType="text"
+                    style="@style/edittext"
+                    android:layout_marginTop="16dp"
+                    android:hint="Phone"
+                    android:layout_below="@+id/pleaeTellUs"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>

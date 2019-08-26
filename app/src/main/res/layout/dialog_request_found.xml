@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="300dp"
+        android:background="@drawable/bg_dialog" android:layout_height="350dp">
+
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp">
+
+        <ImageView android:id="@+id/ivProgress"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="20dp"
+                   android:layout_centerHorizontal="true"
+
+                   android:src="@drawable/icon_request_found"/>
+        <TextView
+                android:id="@+id/tvAwaiting"
+                style="@style/personTv"
+                android:layout_below="@+id/ivProgress"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:text="Request Found"/>
+
+
+        <TextView
+                android:id="@+id/tvLabel"
+                android:layout_below="@+id/tvAwaiting"
+                style="@style/hintColor"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+        />
+
+
+        <TextView
+                style="@style/italic_tv"
+                android:text="request timer 15 sec"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:layout_below="@+id/tvLabel"
+        />
+
+        <Button android:id="@+id/btnAcceptReq"
+                android:layout_width="130dp"
+                style="@style/main_btn_yellow"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="20dp"
+                android:text="Accept"/>
+
+
+        <Button
+                android:id="@+id/btnCancelReq"
+                android:layout_width="130dp"
+                style="@style/main_btn"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="20dp"
+                android:elevation="3dp"
+                android:text="Cancel"/>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

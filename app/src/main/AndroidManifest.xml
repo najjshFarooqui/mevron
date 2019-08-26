@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.fahim.mevronrider">
+    <uses-feature
+            android:name="android.hardware.Camera"
+            android:required="true"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <uses-feature
+            android:name="android.hardware.fingerprint"
+            android:required="false"/>
+
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+
+    <application
+
+
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+        <activity android:name=".views.activity.FingerAuthActivity">
+        </activity>
+        <activity android:name=".views.activity.ResetPasswordActivity">
+        </activity>
+        <activity android:name=".views.activity.SplashActivity">
+        </activity>
+        <activity android:name=".views.fragments.OtpActivity">
+        </activity>
+        <activity android:name=".views.fragments.EmailActivity">
+        </activity>
+        <activity android:name=".utils.BaseActivity">
+        </activity>
+        <activity android:name=".views.activity.DriverDetailsActivity">
+        </activity>
+        <activity android:name=".views.activity.RideDetailsActivity">
+        </activity>
+        <activity android:name=".views.activity.RegistratonActivity">
+        </activity>
+        <activity android:name=".views.activity.BankDetailsActivity">
+        </activity>
+        <activity android:name=".views.activity.EditProfileActivity">
+        </activity>
+        <activity android:name=".views.activity.RideFInishedActivity">
+        </activity>
+        <activity android:name=".views.activity.ProfileActivity">
+        </activity>
+        <activity android:name=".views.activity.RideHistoryActivity">
+        </activity>
+        <activity android:name=".views.activity.HomeActivity">
+        </activity>
+        <activity android:name=".views.activity.EarningsActivity">
+        </activity>
+        <activity android:name=".views.activity.ApprovedActivity">
+        </activity>
+        <activity android:name=".views.activity.ThanksActivity">
+        </activity>
+        <activity android:name=".views.activity.BecomeDriverActivity">
+        </activity>
+        <activity android:name=".views.activity.PagerActivity">
+        </activity>
+        <activity android:name=".views.activity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="@string/google_maps_key"/>
+        <meta-data
+                android:name="com.facebook.sdk.ApplicationId"
+                android:value="@string/facebook_app_id"/>
+
+
+    </application>
+
+</manifest>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.fahim.mevronrider.views.fragments.FragmentSecurity">
+
+    <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_height="match_parent"
+            android:background="@drawable/bg_main"
+            android:layout_width="match_parent">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:orientation="vertical"
+                      android:layout_width="match_parent"
+                      android:layout_marginLeft="30dp"
+                      android:layout_marginRight="30dp"
+                      android:layout_marginBottom="30dp"
+                      android:layout_height="match_parent">
+
+
+            <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                <TextView
+                        android:id="@+id/becomeDriverTv"
+                        android:height="50dp"
+                        android:layout_marginTop="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:lineSpacingMultiplier="1.56"
+                        style="@style/BecomeADriver"
+                        android:text="Security Check"/>
+
+
+                <TextView
+                        android:id="@+id/pleaeTellUs"
+
+                        android:layout_below="@+id/becomeDriverTv"
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:lineSpacingMultiplier="1.25"
+                        style="@style/PleaseTellUsYour"
+                        android:text="Please fill the details of your profile and driver licence below."
+                        android:width="300dp"/>
+
+
+                <EditText
+                        android:id="@+id/etDriverLicence"
+                        android:inputType="text"
+                        style="@style/edittext"
+                        android:layout_marginTop="16dp"
+                        android:hint="Your driver licence"
+                        android:layout_below="@+id/pleaeTellUs"/>
+
+
+                <EditText
+                        android:id="@+id/etLicenceExpiration"
+                        android:inputType="text"
+                        style="@style/edittext"
+                        android:layout_marginTop="16dp"
+                        android:hint="Expiration Date"
+                        android:layout_below="@+id/etDriverLicence"/>
+
+
+                <EditText
+                        android:id="@+id/etFirstName"
+                        android:inputType="text"
+                        style="@style/edittext"
+                        android:layout_marginTop="16dp"
+                        android:hint="First Name"
+                        android:layout_below="@+id/etLicenceExpiration"/>
+
+
+                <EditText
+                        android:id="@+id/etMiddleName"
+                        android:inputType="text"
+                        style="@style/edittext"
+                        android:layout_marginTop="16dp"
+                        android:hint="Middle Name"
+                        android:layout_below="@+id/etFirstName"/>
+
+
+                <EditText
+                        android:id="@+id/etLastName"
+                        android:inputType="text"
+                        style="@style/edittext"
+                        android:layout_marginTop="16dp"
+                        android:hint="Last Name"
+                        android:layout_below="@+id/etMiddleName"/>
+
+
+                <androidx.cardview.widget.CardView
+                        android:id="@+id/cardDob"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        app:cardCornerRadius="4dp"
+                        app:cardBackgroundColor="#FF292929"
+                        android:layout_marginTop="16dp"
+                        android:layout_below="@+id/etLastName">
+
+
+                    <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="Date of birth"
+                            android:textColor="#FFF"
+                            style="@style/PleaseTellUsYour"
+                            android:layout_marginLeft="20dp"
+                            android:textSize="14sp"
+                            android:layout_gravity="center_vertical"
+
+                    />
+
+                    <Spinner android:id="@+id/dobSpinner"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center_vertical|right">
+                    </Spinner>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <EditText
+                        android:id="@+id/etAddress"
+                        android:inputType="text"
+                        style="@style/edittext"
+                        android:layout_marginTop="16dp"
+                        android:hint="Address"
+                        android:layout_below="@+id/cardDob"/>
+
+
+                <EditText
+                        android:id="@+id/etState"
+                        android:inputType="text"
+                        style="@style/edittext"
+                        android:layout_marginTop="16dp"
+                        android:hint="State"
+                        android:layout_below="@+id/etAddress"/>
+
+
+                <EditText
+                        android:id="@+id/etnationalSecurityNumber"
+                        android:inputType="text"
+                        style="@style/edittext"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="150dp"
+                        android:hint="Social security number"
+                        android:layout_below="@+id/etState"/>
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

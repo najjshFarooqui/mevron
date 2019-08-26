@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="@drawable/bg_main"
+
+              android:layout_height="match_parent">
+
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="30dp">
+
+
+        <TextView
+                android:id="@+id/becomeDriverTv"
+                android:height="50dp"
+                android:layout_marginTop="50dp"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:lineSpacingMultiplier="1.56"
+                style="@style/BecomeADriver"
+                android:text="Residential Address"/>
+
+
+        <TextView
+                android:id="@+id/pleaeTellUs"
+
+                android:layout_below="@+id/becomeDriverTv"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:lineSpacingMultiplier="1.25"
+                style="@style/PleaseTellUsYour"
+                android:text="Please fill the details of your address below."
+                android:width="300dp"/>
+
+
+        <EditText
+                android:id="@+id/etResidentialAddress"
+                android:inputType="text"
+                style="@style/edittext"
+                android:layout_marginTop="16dp"
+                android:hint="Your Residential Address"
+                android:layout_below="@+id/pleaeTellUs"/>
+
+
+        <EditText
+                android:id="@+id/etCity"
+                android:inputType="text"
+                style="@style/edittext"
+                android:layout_marginTop="16dp"
+                android:hint="City"
+                android:layout_below="@+id/etResidentialAddress"/>
+
+
+        <EditText
+                android:id="@+id/etZipCode"
+                android:inputType="text"
+                style="@style/edittext"
+                android:layout_marginTop="16dp"
+                android:hint="Zip code"
+                android:layout_below="@+id/etCity"/>
+
+    </RelativeLayout>
+</LinearLayout>

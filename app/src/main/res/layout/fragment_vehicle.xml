@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.fahim.mevronrider.views.fragments.FragmentVehicle">
+
+    <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:background="@drawable/bg_main"
+            tools:context="com.fahim.mevronrider.views.activity.BecomeDriverActivity">
+
+
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginBottom="30dp">
+
+
+            <TextView
+                    android:id="@+id/becomeDriverTv"
+                    android:height="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:lineSpacingMultiplier="1.56"
+                    style="@style/BecomeADriver"
+                    android:text="What do you drive"/>
+
+
+            <TextView
+                    android:id="@+id/pleaeTellUs"
+
+                    android:layout_below="@+id/becomeDriverTv"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:lineSpacingMultiplier="1.25"
+                    style="@style/PleaseTellUsYour"
+                    android:text="Please fill the details of your vehicle below."
+                    android:width="300dp"/>
+
+
+            <EditText
+                    android:id="@+id/etMake"
+                    android:inputType="text"
+                    style="@style/edittext"
+                    android:layout_marginTop="16dp"
+                    android:hint="Make"
+                    android:layout_below="@+id/pleaeTellUs"/>
+
+
+            <EditText
+                    android:id="@+id/etModel"
+                    android:inputType="text"
+                    style="@style/edittext"
+                    android:layout_marginTop="16dp"
+                    android:hint="Model"
+                    android:layout_below="@+id/etMake"/>
+
+
+            <EditText
+                    android:id="@+id/etYear"
+                    android:inputType="text"
+                    style="@style/edittext"
+                    android:layout_marginTop="16dp"
+                    android:hint="Year"
+                    android:layout_below="@+id/etModel"/>
+
+
+            <EditText
+                    android:id="@+id/etColor"
+                    android:inputType="text"
+                    style="@style/edittext"
+                    android:layout_marginTop="16dp"
+                    android:hint="Color"
+                    android:layout_below="@+id/etYear"/>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</FrameLayout>

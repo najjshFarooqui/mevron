@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="300dp"
+                android:background="@drawable/bg_dialog"
+                android:layout_height="310dp">
+
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="16dp">
+
+        <ImageView android:id="@+id/ivProgress"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="20dp"
+                   android:layout_centerHorizontal="true"
+                   android:src="@drawable/icon_rating"
+
+        />
+        <TextView
+                android:id="@+id/tvAwaiting"
+                style="@style/personTv"
+                android:layout_below="@+id/ivProgress"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:text="How's Your Ride ?"/>
+
+
+        <TextView
+                android:id="@+id/tvLabel"
+                android:layout_below="@+id/tvAwaiting"
+                style="@style/hintColor"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:text="Please rate your passenger."/>
+
+
+        <RatingBar
+                android:id="@+id/rateDriver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvLabel"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:numStars="5"
+                android:stepSize="1"
+
+                android:theme="@style/RatingBar"
+        />
+
+        <Button
+                android:id="@+id/btnRatePassanger"
+                style="@style/main_btn_yellow"
+
+                android:layout_alignParentBottom="true"
+                android:text="Rate Passanger"/>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

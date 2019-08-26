@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/cardDob"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:cardCornerRadius="4dp"
+            app:cardBackgroundColor="#FF292929"
+            android:layout_marginTop="16dp"
+            android:layout_below="@+id/etLastName">
+
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+
+                    android:id="@+id/rv">
+
+                <TextView
+                        android:id="@+id/tvTo"
+                        style="@style/hintColor"
+                        android:layout_centerVertical="true"
+
+                        android:text="TO : "/>
+
+
+                <TextView
+                        android:id="@+id/tvDestination"
+                        android:layout_toRightOf="@+id/tvTo"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="New York AVE, 19534"
+                        style="@style/PleaseTellYour"
+                        android:textSize="14sp"
+                        android:layout_centerVertical="true"
+
+                />
+
+
+            </RelativeLayout>
+
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_chevron"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+
+            />
+            <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/rv"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginLeft="22dp"
+            >
+
+
+                <TextView
+                        android:id="@+id/tvRideDistance"
+                        style="@style/italic_yellow"
+                        android:layout_alignParentLeft="true"
+                        android:text="najish"/>
+
+
+                <TextView
+                        android:id="@+id/tvETA"
+                        style="@style/italic_yellow"
+                        android:layout_toRightOf="@+id/tvRideDistance"
+                        android:layout_marginLeft="8dp"
+                        android:text="farooqui"/>
+
+
+                <TextView
+                        android:id="@+id/tvRidePrice"
+                        android:text="mahidpur"
+                        android:layout_toRightOf="@+id/tvETA"
+                        android:layout_marginLeft="8dp"
+                        style="@style/italic_yellow"/>
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

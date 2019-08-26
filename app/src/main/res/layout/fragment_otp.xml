@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.fahim.mevronrider.views.fragments.FragmentOTP">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:background="@drawable/bg_main"
+                  android:layout_height="match_parent">
+
+
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="30dp">
+
+
+            <TextView
+                    android:id="@+id/becomeDriverTv"
+                    android:height="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:lineSpacingMultiplier="1.56"
+                    style="@style/BecomeADriver"
+                    android:text="Account Verification"/>
+
+
+            <TextView
+                    android:id="@+id/pleaeTellUs"
+                    android:layout_below="@+id/becomeDriverTv"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:lineSpacingMultiplier="1.25"
+                    style="@style/PleaseTellUsYour"
+                    android:text="we have sent you a code to your phone  "
+            />
+
+            <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/pleaeTellUs"
+                    android:layout_below="@+id/becomeDriverTv"
+                    android:textColor="#FFF"
+                    android:text="+919111978789"
+
+            />
+
+
+            <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:id="@+id/events_buttons"
+                    android:layout_below="@+id/pleaeTellUs"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                <EditText
+                        android:text="1"
+                        android:maxLength="1"
+                        android:gravity="center"
+                        style="@style/otp"
+
+                />
+
+
+                <EditText
+                        android:text="1"
+                        android:maxLength="1"
+                        style="@style/otp"
+                        android:gravity="center"
+                />
+
+                <EditText
+                        android:text="1"
+                        android:maxLength="1"
+                        style="@style/otp"
+                        android:gravity="center"
+                />
+
+
+                <EditText
+                        android:text="1"
+                        android:maxLength="1"
+                        style="@style/otp"
+                        android:gravity="center"
+                />
+
+                <EditText
+                        android:text="1"
+                        android:maxLength="1"
+                        style="@style/otp"
+                        android:gravity="center"
+                />
+
+
+            </LinearLayout>
+
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="send code again"
+                      android:layout_marginTop="20dp"
+                      android:layout_below="@+id/events_buttons"
+                      android:textColor="@color/yellowText"
+                      android:textStyle="italic|bold"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</FrameLayout>

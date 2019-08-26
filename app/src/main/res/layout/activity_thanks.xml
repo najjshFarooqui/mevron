@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_main"
+        tools:context="com.fahim.mevronrider.views.activity.ThanksActivity">
+
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="30dp">
+
+
+        <TextView
+                android:id="@+id/becomeDriverTv"
+                android:layout_marginTop="50dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                style="@style/BecomeADriver"
+                android:text="Thank You For \nRegistering With us"/>
+
+
+        <TextView
+                android:id="@+id/pleaeTellUs"
+
+                android:layout_below="@+id/becomeDriverTv"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                style="@style/PleaseTellUsYour"
+                android:text="we will notify you on youremail/text message \nonce your application is approved"
+                android:width="300dp"/>
+
+
+        <ImageView
+                android:id="@+id/approvalIv" android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_waiting_for_aproval"
+                android:layout_centerInParent="true"
+        />
+
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:text="Waiting for approval"
+                  android:textSize="14sp"
+                  android:textColor="@color/hintclor"
+                  android:layout_below="@+id/approvalIv"
+                  android:gravity="center_horizontal"/>
+
+        <Button android:id="@+id/btnClose"
+                style="@style/main_btn"
+                android:layout_alignParentBottom="true"
+                android:text="close"/>
+    </RelativeLayout>
+</RelativeLayout>
+    

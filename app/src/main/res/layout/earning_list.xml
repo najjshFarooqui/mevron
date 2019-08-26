@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/cardDob"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:cardCornerRadius="4dp"
+            app:cardBackgroundColor="#FF292929"
+            android:layout_marginTop="16dp"
+            android:layout_below="@+id/etLastName">
+
+
+        <TextView
+                android:id="@+id/tvEarningDate"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="March 12 2020"
+                style="@style/PleaseTellUsYour"
+                android:layout_marginLeft="20dp"
+                android:textSize="14sp"
+                android:layout_gravity="center_vertical"
+
+        />
+
+
+        <TextView
+                android:id="@+id/tvEarningPrice"
+                android:gravity="right"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="20dp"
+                android:lineSpacingMultiplier="1.43"
+                style="@style/price"
+                android:text="25 USD"
+        />
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

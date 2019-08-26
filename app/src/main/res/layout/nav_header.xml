@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable name="handler"
+                  type="com.fahim.mevronrider.views.activity.HomeBaseInterface"/>
+    </data>
+
+    <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mainL"
+            android:background="#FF292929"
+
+    >
+
+
+        <RelativeLayout
+                android:id="@+id/myProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="24dp"
+        >
+
+            <ImageView
+                    android:id="@+id/profileIcon"
+                    android:layout_width="40dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="40dp"
+                    android:src="@drawable/icon_default_profile_photo"
+
+            />
+
+            <LinearLayout
+
+                    android:id="@+id/editProfile"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/profileIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:orientation="vertical"
+                    android:layout_toRightOf="@+id/profileIcon"
+                    android:layout_marginLeft="24dp">
+
+                <TextView
+
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:text="My Profile"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                />
+
+                <TextView
+                        android:layout_marginTop="4dp"
+                        android:id="@+id/myNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="16dp"
+                        android:text="see profile"
+                        android:textStyle="italic"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"
+                />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <ScrollView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/myProfile">
+
+            <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+            >
+
+
+                <LinearLayout
+                        android:onClick="@{() -> handler.onHomeClicked()}"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical"
+                >
+
+
+                    <TextView
+                            android:id="@+id/tvHome"
+                            style="@style/nav_regular"
+                            android:text="Home"
+
+                    />
+                </LinearLayout>
+
+
+                <LinearLayout
+                        android:onClick="@{() -> handler.onMyEarningClicked()}"
+                        android:id="@+id/navMyEarnings"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical">
+
+
+                    <TextView
+                            style="@style/nav_regular"
+                            android:text="My Earnings"
+                    />
+                </LinearLayout>
+
+
+                <TextView
+                        android:id="@+id/navRideHistory"
+                        style="@style/nav_regular"
+                        android:text="My Ride History"
+                />
+
+
+                <LinearLayout
+                        android:id="@+id/navContactSupervisor"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical">
+
+
+                    <TextView
+                            android:id="@+id/book_ride"
+                            style="@style/nav_regular"
+                            android:text="Contack Supervisor"
+                    />
+                </LinearLayout>
+
+
+                <LinearLayout
+                        android:id="@+id/navAccountSettings"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical">
+
+
+                    <TextView
+                            android:id="@+id/tvAccountSettings"
+                            style="@style/nav_regular"
+                            android:text="My Account Settings"
+                    />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                        android:id="@+id/navShareApp"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical">
+
+                    <TextView
+                            style="@style/nav_regular"
+                            android:text="Share This App"/>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+        >
+
+            <!-- TODO change color -->
+            <Switch
+                    android:id="@+id/switchDriverMode"
+                    android:layout_width="52dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginBottom="24dp"
+
+
+            />
+
+
+            <TextView
+                    android:id="@+id/tvDriverLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Driver Mode"
+                    android:textColor="@color/white"
+                    android:textAllCaps="true"
+                    android:textSize="14sp"
+
+                    android:layout_toRightOf="@+id/switchDriverMode"
+                    android:layout_marginLeft="16dp"
+
+            />
+
+
+            <TextView
+                    android:id="@+id/tvDriverMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_below="@+id/tvDriverLabel"
+                    android:textColor="@color/white"
+                    android:textStyle="italic"
+                    android:layout_toRightOf="@+id/switchDriverMode"
+                    android:layout_marginLeft="16dp"
+                    android:text="(your driver mode are currently on)"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

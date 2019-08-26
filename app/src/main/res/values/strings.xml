@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Mevron Driver</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="facebook_app_id" translatable="false">2389216244669328</string>
+    <string name="fb_login_protocol_scheme">fb2389216244669328</string>
+    <string name="app_id">1:139797156259:android:a40ed6eb08e920be</string>
+
+    <array name="country">
+        <item>India</item>
+        <item>Pakistan</item>
+        <item>USA</item>
+        <item>China</item>
+        <item>Japan</item>
+    </array>
+</resources>

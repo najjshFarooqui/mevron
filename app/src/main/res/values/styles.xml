@@ -1,0 +1,215 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <!-- XML file for the style (saved in res/values/) -->
+
+    <style name="BecomeADriver">
+        <item name="android:fontFamily">Lato</item>
+        <item name="android:textColor">#FFFE9500</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style
+            name="PleaseTellUsYour">
+        <item name="android:fontFamily">Lato</item>
+        <item name="android:textColor">#FF9B9B9B</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style
+            name="PleaseTellYour">
+        <item name="android:fontFamily">Lato</item>
+        <item name="android:textColor">#E4DBDB</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
+    <style
+            name="Email">
+        <item name="android:fontFamily">Lato</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <style name="edittext">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/edittext</item>
+        <item name="android:textColorHint">@color/hintclor</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+
+
+    </style>
+
+
+    <style name="otp">
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">#FFF</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/bg_otp</item>
+    </style>
+
+
+    <style name="main_btn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">Lato</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/bg_button</item>
+    </style>
+
+
+    <style name="main_btn_yellow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">Lato</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/bg_button_yellow</item>
+    </style>
+
+
+    <!-- <style name="nav_regular">
+         <item name="android:layout_width">match_parent</item>
+         <item name="android:layout_height">52dp</item>
+         <item name="android:paddingLeft">24dp</item>
+         <item name="android:paddingRight">24dp</item>
+         <item name="android:textColor">@color/nav_text_color</item>
+         <item name="android:textSize">15sp</item>
+         <item name="android:gravity">center_vertical</item>
+         <item name="android:drawablePadding">24dp</item>
+     </style>
+ -->
+
+    <style name="nav_regular">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#FF9B9B9B</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingBottom">6dp</item>
+    </style>
+
+
+    <style name="nav">
+        <item name="android:background">@color/yellow</item>
+
+
+    </style>
+
+
+    <style name="horizontal_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layerType">software</item>
+        <item name="android:background">@drawable/dotted</item>
+
+    </style>
+
+
+    <style name="regulattv">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+
+    </style>
+
+
+    <style name="large_text">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:fontFamily">Lato</item>
+        <item name="android:textColor">#FFFE9500</item>
+        <item name="android:textSize">48sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="italic_tv">
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+
+    <style name="price">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">Lato</item>
+        <item name="android:textColor">#FFFE9500</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="hintColor">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/hintclor</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+
+    </style>
+
+
+    <style
+            name="italic_yellow"
+    >
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:fontFamily">Lato</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">italic|bold</item>
+    </style>
+
+
+    <style
+            name="personTv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">Lato</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/yellow</item>
+        <item name="colorControlActivated">@color/hintclor</item>
+    </style>
+
+
+    <style
+            name="ride_response">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">Lato</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+
+</resources>

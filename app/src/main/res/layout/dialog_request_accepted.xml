@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="320dp"
+                android:background="@drawable/bg_dialog"
+                android:layout_height="280dp">
+
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="16dp">
+
+        <TextView
+                android:id="@+id/tvAwaiting"
+                style="@style/personTv"
+                android:layout_below="@+id/ivProgress"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:text="You Have Accepted A Request"
+        />
+
+
+        <TextView
+                android:id="@+id/tvLabel"
+                android:layout_below="@+id/tvAwaiting"
+                style="@style/hintColor"
+                android:layout_centerHorizontal="true"
+                android:text="Please go to pick up location right away."
+        />
+
+        <TextView
+                android:id="@+id/dialogUserDistance"
+                android:layout_below="@+id/tvLabel"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="24dp"
+                style="@style/italic_yellow"
+                android:text="distance 435m"/>
+
+
+        <TextView
+                android:id="@+id/dialogUserEta"
+                android:layout_below="@+id/tvLabel"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/dialogUserDistance"
+                android:layout_marginLeft="8dp"
+                style="@style/italic_yellow"
+                android:text="ETA 3 min"/>
+        <!-- TODO add image -->
+
+        <TextView
+                android:id="@+id/tvDriverCurrentLocation"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                style="@style/regulattv"
+                android:text="Your current location"
+        />
+        <!-- TODO add image -->
+
+        <TextView
+                android:id="@+id/tvUserCurrentLocation"
+                android:layout_below="@+id/tvDriverCurrentLocation"
+                android:layout_marginTop="16dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                style="@style/regulattv"
+                android:text="Your current location"
+        />
+
+
+        <Button android:layout_width="130dp"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/btnCancelRide"
+                style="@style/main_btn"
+                android:layout_alignParentBottom="true"
+                android:text="Cancel"/>
+
+
+        <Button android:layout_width="130dp"
+                android:id="@+id/btnArrive"
+                style="@style/main_btn_yellow"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:text="Arrive"/>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

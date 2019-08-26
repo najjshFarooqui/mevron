@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_width="320dp"
+                android:background="@drawable/bg_dialog"
+                android:layout_height="280dp">
+
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="16dp">
+
+        <TextView
+                android:id="@+id/tvAwaiting"
+                style="@style/personTv"
+                android:layout_below="@+id/ivProgress"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:text="Arrived To Pickup Location"
+        />
+
+
+        <TextView
+                android:id="@+id/tvLabel"
+                android:layout_below="@+id/tvAwaiting"
+                style="@style/hintColor"
+                android:layout_centerHorizontal="true"
+                android:text="Start your ride once you meet your \npassenger."/>
+
+        <TextView
+                android:id="@+id/dialogUserDistance"
+                android:layout_below="@+id/tvLabel"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="24dp"
+                style="@style/italic_yellow"
+                android:text="distance 435m"/>
+
+
+        <TextView
+                android:id="@+id/dialogUserEta"
+                android:layout_below="@+id/tvLabel"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/dialogUserDistance"
+                android:layout_marginLeft="8dp"
+                style="@style/italic_yellow"
+                android:text="ETA 3 min"/>
+
+
+        <TextView
+                android:id="@+id/dialogRidePrice"
+                android:layout_below="@+id/tvLabel"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/dialogUserEta"
+                android:layout_marginLeft="8dp"
+                style="@style/italic_yellow"
+                android:text="price 25$"/>
+
+
+        <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivDriverProfile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:riv_corner_radius="24dp"
+                android:layout_marginLeft="32dp"
+                android:layout_alignTop="@+id/tvDriverCurrentLocation"
+                android:layout_centerVertical="true"
+                android:src="@drawable/rouded_image"/>
+
+
+        <!-- TODO add image -->
+
+
+        <TextView
+                android:id="@+id/tvRiderName"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                style="@style/personTv"
+                android:text="James Bond"
+        />
+        <!-- TODO add image -->
+
+        <RatingBar
+                android:id="@+id/my_rating"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvRiderName"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:numStars="5"
+                android:stepSize="1"
+                android:rating="5"
+                android:theme="@style/RatingBar"
+        />
+
+        <ImageView
+                android:id="@+id/ivCallUser"
+                android:layout_toLeftOf="@+id/ivChatUser"
+                android:layout_marginRight="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/circle"
+                android:src="@drawable/icon_call"/>
+
+        <ImageView
+                android:id="@+id/ivChatUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/circle"
+                android:src="@drawable/icon_chat"/>
+
+        <Button android:layout_width="130dp"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/btnCancelRide"
+                style="@style/main_btn"
+                android:layout_alignParentBottom="true"
+                android:text="Cancel"/>
+
+
+        <Button android:layout_width="130dp"
+                android:id="@+id/btnStartRide"
+                style="@style/main_btn_yellow"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:text="Start a Ride"/>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

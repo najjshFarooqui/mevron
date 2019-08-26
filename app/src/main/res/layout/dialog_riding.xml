@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CC000000">
+
+
+    <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="320dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_dialog"
+            android:layout_height="280dp">
+
+
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="16dp">
+
+            <TextView
+                    android:id="@+id/tvAwaiting"
+                    style="@style/personTv"
+                    android:layout_below="@+id/ivProgress"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="14sp"
+                    android:text="Ride Started"
+            />
+
+
+            <TextView
+                    android:id="@+id/tvLabel"
+                    android:layout_below="@+id/tvAwaiting"
+                    style="@style/hintColor"
+                    android:layout_marginLeft="14dp"
+                    android:text="Enjoy your ride."
+            />
+
+            <TextView
+                    android:id="@+id/dialogUserDistance"
+                    android:layout_below="@+id/tvLabel"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="14dp"
+                    style="@style/italic_yellow"
+                    android:text="distance 435m"/>
+
+
+            <TextView
+                    android:id="@+id/dialogUserEta"
+                    android:layout_below="@+id/tvLabel"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@+id/dialogUserDistance"
+                    android:layout_marginLeft="8dp"
+                    style="@style/italic_yellow"
+                    android:text="ETA 3 min"/>
+
+
+            <TextView
+                    android:id="@+id/dialogRidePrice"
+                    android:layout_below="@+id/tvLabel"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@+id/dialogUserEta"
+                    android:layout_marginLeft="8dp"
+                    style="@style/italic_yellow"
+                    android:text="20$"/>
+            <!-- TODO add image -->
+
+
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:src="@drawable/icon_passenger_pin"
+                       android:layout_marginLeft="16dp"
+                       android:id="@+id/ivMarkerr"
+                       android:layout_centerVertical="true"/>
+
+
+            <ImageView
+                    android:id="@+id/ivMarker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_destination_pin"
+                    android:layout_marginTop="16dp"
+                    android:layout_below="@+id/tvCurentLocation"
+                    android:layout_marginLeft="16dp"
+            />
+
+
+            <!-- TODO add image -->
+
+            <TextView
+                    android:id="@+id/tvCurentLocation"
+                    android:layout_below="@+id/tvDriverCurrentLocation"
+                    android:layout_marginTop="16dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/ivMarkerr"
+                    android:layout_marginLeft="32dp"
+                    style="@style/regulattv"
+                    android:maxLength="40"
+                    android:maxEms="12"
+                    android:text="Your current location"
+            />
+
+
+            <TextView
+                    android:id="@+id/tvDestinationLocation"
+                    android:layout_below="@+id/tvCurentLocation"
+                    android:layout_marginTop="16dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="32dp"
+                    android:layout_toRightOf="@+id/ivMarker"
+                    android:maxEms="12"
+                    android:maxLength="40"
+                    style="@style/regulattv"
+                    android:text="165, yashwant margnjkbasdjksdjkhaskjashkjashkh"
+
+
+            />
+
+
+            <Button
+                    android:layout_width="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:id="@+id/btnArrivedAtDrop"
+                    style="@style/main_btn_yellow"
+                    android:layout_alignParentBottom="true"
+                    android:text="Arrived At Drop Off Locaton"/>
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
