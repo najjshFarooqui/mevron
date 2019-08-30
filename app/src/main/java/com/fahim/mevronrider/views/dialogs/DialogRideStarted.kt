@@ -104,4 +104,8 @@ class DialogRideStarted(var c: Activity) : Dialog(c) {
         }
     }
 
+    override fun onBackPressed() {
+
+    }
+
 }
