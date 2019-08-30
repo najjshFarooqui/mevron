@@ -1,25 +1,21 @@
 package com.fahim.mevronrider.views.dialogs
 
-import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.Window
-import android.widget.Toast
 import com.fahim.mevronrider.R
 import com.fahim.mevronrider.RiderModel
-import com.fahim.mevronrider.getUserKey
 import com.fahim.mevronrider.models.CurrentRides
+import com.fahim.mevronrider.views.activity.HomeActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.dialog_arrived.*
 
 
-class DialogDriverArrived(var c: Activity) : Dialog(c) {
+class DialogDriverArrived(var c: HomeActivity) : Dialog(c) {
     var d: Dialog? = null
-    var userKey: String? = null
     private var mRideReference: DatabaseReference? = null
     private var mDatabase: FirebaseDatabase? = null
     lateinit var riderKey: String
@@ -32,12 +28,17 @@ class DialogDriverArrived(var c: Activity) : Dialog(c) {
 
         getRides()
 
+
+
+
+        c.dialogArrive.setOnDismissListener(null)
         btnCancelRide.setOnClickListener {
-            dismiss()
+            this.setOnDismissListener(null)
+            cancel()
         }
         btnStartRide.setOnClickListener {
             setRide()
-            dismiss()
+
         }
 
 
@@ -46,93 +47,59 @@ class DialogDriverArrived(var c: Activity) : Dialog(c) {
 
     private fun getRides() {
         mDatabase = FirebaseDatabase.getInstance()
+        mRideReference = mDatabase!!.reference.child("ride_request")
+        if (mRideReference != null) {
 
 
-        val reference = FirebaseDatabase.getInstance().reference
-        reference.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-
-            }
-
-            override fun onDataChange(p0: DataSnapshot) {
-                if (p0.hasChild("ride_request")) {
-                    reference.child("ride_request")
-                        .orderByChild("najish")
-                        .equalTo("farooqui")
-                        .addListenerForSingleValueEvent(object : ValueEventListener {
-
-                            override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                                dataSnapshot.children.forEach {
-
-                                    userKey = it.key.toString()
-
-                                    val referenceOne =
-                                        FirebaseDatabase.getInstance().reference.child("ride_request").child(userKey!!)
-                                    referenceOne.addListenerForSingleValueEvent(object : ValueEventListener {
-                                        override fun onCancelled(p0: DatabaseError) {
-
-
-                                        }
-
-
-                                        override fun onDataChange(snapshot: DataSnapshot) {
-                                            Log.e("Count ", "" + snapshot.childrenCount)
-                                            snapshot.children.forEach {
-                                                var rides = snapshot.getValue(CurrentRides::class.java)
-                                                val ride = snapshot.getValue(CurrentRides::class.java)
-                                                val distance = rides!!.ride_distance
-                                                val time = rides.ride_time
-                                                val price = rides.ride_pirce
-                                                dialogUserDistance.text = distance
-                                                dialogUserEta.text = time
-                                                dialogRidePrice.text = price
-
-                                                var userKey = getUserKey(c.applicationContext)
-                                                var userReference =
-                                                    FirebaseDatabase.getInstance().reference.child("rider")
-                                                        .child(userKey!!)
-                                                userReference.addListenerForSingleValueEvent(object :
-                                                    ValueEventListener {
-                                                    override fun onDataChange(p0: DataSnapshot) {
-                                                        var riderDetails = p0.getValue(RiderModel::class.java)
-                                                        tvRiderName.text = riderDetails!!.user_name
-
-                                                        ivCallUser.setOnClickListener {
-                                                            val intent = Intent(Intent.ACTION_DIAL)
-                                                            intent.data = Uri.parse("tel:0123456789")
-                                                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                                                            c.applicationContext.startActivity(intent)
-                                                        }
-
-
-                                                    }
-
-                                                    override fun onCancelled(p0: DatabaseError) {
-
-
-                                                    }
-                                                })
-
-
-                                            }
-                                        }
-
-                                    })
-                                }
-                            }
-
-                            override fun onCancelled(p0: DatabaseError) {
-
-                            }
-                        })
+            mRideReference!!.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
                 }
-            }
+
+                override fun onDataChange(p0: DataSnapshot) {
+                    val children = p0.children
+                    children.forEach {
+                        val key: String = it.key.toString()
+                        p0.children.forEach {
+                            var rides = it.getValue(CurrentRides::class.java)
+                            val distance = rides!!.ride_distance
+                            val time = rides.ride_time
+                            val price = rides.ride_pirce
+                            val riderId = rides.rider_id
+                            dialogUserDistance.text = distance
+                            dialogUserEta.text = time
+                            dialogRidePrice.text = price
+                            var userReference =
+                                FirebaseDatabase.getInstance().reference.child("rider")
+                                    .child(riderId)
+                            userReference.addListenerForSingleValueEvent(object :
+                                ValueEventListener {
+                                override fun onDataChange(p0: DataSnapshot) {
+                                    var riderDetails = p0.getValue(RiderModel::class.java)
+                                    tvRiderName.text = riderDetails!!.user_name
+                                    val riderNumber = riderDetails.phone_number
+                                    ivCallUser.setOnClickListener {
+                                        val intent = Intent(Intent.ACTION_DIAL)
+                                        intent.data = Uri.parse("tel:".plus(riderNumber))
+                                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                                        c.applicationContext.startActivity(intent)
+                                    }
 
 
-        })
+                                }
+
+                                override fun onCancelled(p0: DatabaseError) {
 
 
+                                }
+                            })
+
+
+                        }
+                    }
+                }
+
+            })
+        }
     }
 
 
@@ -150,7 +117,6 @@ class DialogDriverArrived(var c: Activity) : Dialog(c) {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     dataSnapshot.children.forEach {
                         riderKey = it.key.toString()
-                        Toast.makeText(c.applicationContext, riderKey, Toast.LENGTH_SHORT).show()
                         mRideReference!!.child(riderKey).child("ride_start").setValue("true")
                         dismiss()
                     }
@@ -160,6 +126,10 @@ class DialogDriverArrived(var c: Activity) : Dialog(c) {
             })
 
         }
+    }
+
+    override fun onBackPressed() {
+
     }
 
 

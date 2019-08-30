@@ -3,6 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="map_api_key">AIzaSyBNIf1AoAvdrOaP0kcXP-xz_UqzKqGCAew</string>
 
     <string name="facebook_app_id" translatable="false">2389216244669328</string>
     <string name="fb_login_protocol_scheme">fb2389216244669328</string>

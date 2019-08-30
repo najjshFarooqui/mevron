@@ -1,47 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:layout_width="320dp"
-                android:background="@drawable/bg_dialog"
-                android:layout_height="280dp">
 
 
-    <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="16dp">
-
-        <ImageView android:id="@+id/ivProgress"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginTop="20dp"
-                   android:layout_centerHorizontal="true"
-                   android:src="@drawable/icon_waiting_for_request"
-
-        />
-        <TextView
-                android:id="@+id/tvAwaiting"
-                style="@style/personTv"
-                android:layout_below="@+id/ivProgress"
-                android:textStyle="bold"
-                android:layout_centerHorizontal="true"
-                android:text="Awaiting Request"
-        />
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+>
+    <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="320dp"
+            android:background="@drawable/bg_dialog"
+            android:layout_centerInParent="true"
+            android:layout_height="280dp">
 
 
-        <TextView
-                android:layout_below="@+id/tvAwaiting"
-                style="@style/hintColor"
-                android:layout_marginTop="10dp"
-                android:layout_centerHorizontal="true"
-                android:text="We are currently looking for a request \n                     nearby your location."
-        />
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="16dp">
 
-        <Button
-                android:id="@+id/btnGoOffline"
-                style="@style/main_btn"
-                android:layout_alignParentBottom="true"
-                android:text="Go Offline"/>
+            <ImageView android:id="@+id/ivProgress"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="20dp"
+                       android:layout_centerHorizontal="true"
+                       android:src="@drawable/icon_waiting_for_request"
+
+            />
+            <TextView
+                    android:id="@+id/tvAwaiting"
+                    style="@style/personTv"
+                    android:layout_below="@+id/ivProgress"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:text="Awaiting Request"
+            />
+
+
+            <TextView
+                    android:layout_below="@+id/tvAwaiting"
+                    style="@style/hintColor"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="We are currently looking for a request \n                     nearby your location."
+            />
+
+            <Button
+                    android:id="@+id/btnGoOffline"
+                    style="@style/main_btn"
+                    android:layout_alignParentBottom="true"
+                    android:text="Go Offline"/>
+        </RelativeLayout>
+
+
     </RelativeLayout>
-
-
 </RelativeLayout>

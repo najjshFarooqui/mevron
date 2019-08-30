@@ -48,6 +48,7 @@ import android.content.Context
 //
 
 
+
 fun setLoggedIn(context: Context, loggedIn: Boolean) {
     val sharedPreferences = context.getSharedPreferences("taxipref", Context.MODE_PRIVATE)
     val editor = sharedPreferences.edit()

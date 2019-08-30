@@ -17,7 +17,6 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.fahim.mevronrider.R
 import com.fahim.mevronrider.databinding.ActivityHomeBinding
-import com.fahim.mevronrider.models.CurrentRides
 import com.fahim.mevronrider.models.LocationModel
 import com.fahim.mevronrider.views.dialogs.*
 import com.google.android.gms.common.ConnectionResult
@@ -63,7 +62,7 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
     lateinit var dialogRequestFound: DialogRequestFound
     lateinit var dialogRequestAccepted: DialogRequestAccepted
     lateinit var dialogArrive: DialogDriverArrived
-    lateinit var dialogRideStarted: RideStarted
+    lateinit var dialogDialogRideStarted: DialogRideStarted
 
 
     @SuppressLint("MissingPermission")
@@ -256,25 +255,30 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
     fun setUpViews() {
         btnGoOnline.setOnClickListener {
             dialogAwaitingRequest = DialogAwaitingRequest(this)
-            dialogAwaitingRequest.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialogAwaitingRequest.setCanceledOnTouchOutside(false)
+            dialogAwaitingRequest.window!!.setBackgroundDrawable(ColorDrawable(Color.BLACK))
             dialogAwaitingRequest.show()
             dialogAwaitingRequest.setOnDismissListener {
                 dialogRequestFound = DialogRequestFound(this)
-                dialogRequestFound.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dialogRequestFound.window!!.setBackgroundDrawable(ColorDrawable(Color.BLACK))
+                dialogRequestFound.setCanceledOnTouchOutside(false)
                 dialogRequestFound.show()
                 dialogRequestFound.setOnDismissListener {
                     hello()
                     dialogRequestAccepted = DialogRequestAccepted(this)
                     dialogRequestAccepted.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                     dialogRequestAccepted.show()
+                    dialogRequestAccepted.setCanceledOnTouchOutside(false)
                     dialogRequestAccepted.setOnDismissListener {
                         dialogArrive = DialogDriverArrived(this)
                         dialogArrive.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                         dialogArrive.show()
+                        dialogArrive.setCanceledOnTouchOutside(false)
                         dialogArrive.setOnDismissListener {
-                            dialogRideStarted = RideStarted(this)
-                            dialogRideStarted.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                            dialogRideStarted.show()
+                            dialogDialogRideStarted = DialogRideStarted(this)
+                            dialogDialogRideStarted.setCanceledOnTouchOutside(false)
+                            dialogDialogRideStarted.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                            dialogDialogRideStarted.show()
                         }
 
                     }
@@ -413,15 +417,15 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
 
 
                     override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-
-                        val rides = p0.getValue(CurrentRides::class.java)
-                        System.out.println(rides!!.pickup_lat + "RIDE LATTITUDE")
-                        System.out.println(rides.pickup_lng + "RIDE LONGITUDE")
-                        val driverLatLng = LatLng(rides.pickup_lat!!.toDouble(), rides.pickup_lng!!.toDouble())
-                        val markerOption = MarkerOptions().position(driverLatLng)
-                            .title("Driver Location")
-                        mGoogleMap.addMarker(markerOption)
-                        // enter_place.text = location
+                        //           System.out.println(p0.children)
+                        //       val rides = p0.getValue(CurrentRides::class.java)
+                        //       System.out.println(rides!!.pickup_lat + "RIDE LATTITUDE")
+                        //       System.out.println(rides.pickup_lng + "RIDE LONGITUDE")
+                        //       val driverLatLng = LatLng(rides!!.pickup_lat!!.toDouble(), rides.pickup_lng!!.toDouble())
+                        //       val markerOption = MarkerOptions().position(driverLatLng)
+                        //           .title("Driver Location")
+                        //       mGoogleMap.addMarker(markerOption)
+                        //       // enter_place.text = location
 
                     }
                 })

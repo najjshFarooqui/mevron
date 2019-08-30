@@ -30,6 +30,7 @@ class DialogAwaitingRequest(var c: Activity) : Dialog(c), View.OnClickListener {
     }
 
 
+
     fun getRides() {
 
 
@@ -80,6 +81,10 @@ class DialogAwaitingRequest(var c: Activity) : Dialog(c), View.OnClickListener {
             else -> {
             }
         }
+
+    }
+
+    override fun onBackPressed() {
 
     }
 

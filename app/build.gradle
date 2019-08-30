@@ -4,6 +4,9 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+ext {
+    anko_version = '0.10.8'
+}
 
 android {
     compileSdkVersion 29
@@ -29,6 +32,10 @@ android {
         enabled = true
     }
 }
+repositories {
+    maven { url "https://jitpack.io" }
+    maven { url "https://maven.google.com" }
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -51,6 +58,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.firebase:firebase-core:17.1.0'
 
+
     //play service auth
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     implementation 'com.google.firebase:firebase-database:19.0.0'
@@ -60,6 +68,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     implementation 'com.squareup.picasso:picasso:2.5.0'
+    implementation "org.jetbrains.anko:anko:$anko_version"
 
 
 }

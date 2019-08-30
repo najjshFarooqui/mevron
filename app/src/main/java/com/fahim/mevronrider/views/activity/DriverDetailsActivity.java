@@ -21,38 +21,6 @@ public class DriverDetailsActivity extends AppCompatActivity {
     private int[] layouts;
     private Button btnSkip, btnNext;
     private ImageView[] ivArrayDotsPager;
-    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
-
-        @Override
-        public void onPageSelected(int position) {
-            // changing the next button text 'NEXT' / 'GOT IT'
-            if (position == layouts.length - 1) {
-                // last page. make button text to GOT IT
-                btnNext.setText("start");
-                btnSkip.setVisibility(View.GONE);
-                btnNext.setVisibility(View.VISIBLE);
-            } else {
-                // still pages are left
-                btnNext.setText("next");
-                btnSkip.setVisibility(View.VISIBLE);
-                btnNext.setVisibility(View.GONE);
-            }
-            for (int i = 0; i < ivArrayDotsPager.length; i++) {
-                ivArrayDotsPager[i].setImageResource(R.drawable.unselected);
-            }
-            ivArrayDotsPager[position].setImageResource(R.drawable.selected);
-        }
-
-        @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
-
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int arg0) {
-
-        }
-    };
     private EditText email;
 
     @Override
@@ -126,6 +94,40 @@ public class DriverDetailsActivity extends AppCompatActivity {
     private int getItem(int i) {
         return viewPager.getCurrentItem() + i;
     }
+
+
+    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
+
+        @Override
+        public void onPageSelected(int position) {
+            // changing the next button text 'NEXT' / 'GOT IT'
+            if (position == layouts.length - 1) {
+                // last page. make button text to GOT IT
+                btnNext.setText("start");
+                btnSkip.setVisibility(View.GONE);
+                btnNext.setVisibility(View.VISIBLE);
+            } else {
+                // still pages are left
+                btnNext.setText("next");
+                btnSkip.setVisibility(View.VISIBLE);
+                btnNext.setVisibility(View.GONE);
+            }
+            for (int i = 0; i < ivArrayDotsPager.length; i++) {
+                ivArrayDotsPager[i].setImageResource(R.drawable.unselected);
+            }
+            ivArrayDotsPager[position].setImageResource(R.drawable.selected);
+        }
+
+        @Override
+        public void onPageScrolled(int arg0, float arg1, int arg2) {
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int arg0) {
+
+        }
+    };
 
     /**
      * View pager adapter
