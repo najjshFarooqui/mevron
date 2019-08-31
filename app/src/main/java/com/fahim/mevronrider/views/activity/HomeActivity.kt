@@ -15,9 +15,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.fahim.mevronrider.R
-import com.fahim.mevronrider.databinding.ActivityHomeBinding
+import com.fahim.mevronrider.models.CurrentRides
 import com.fahim.mevronrider.models.LocationModel
+import com.fahim.mevronrider.utils.getDirectionsUrl
+import com.fahim.mevronrider.viewmodel.HomeViewModel
 import com.fahim.mevronrider.views.dialogs.*
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
@@ -36,6 +40,9 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
     GoogleApiClient.ConnectionCallbacks,
     GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
     private lateinit var binding: ActivityHomeBinding
+    lateinit var viewModel: HomeViewModel
+    private var polyline: Polyline? = null
+    val TAG = "APPLLIGENT"
 
 
     lateinit var mGoogleMap: GoogleMap
@@ -71,6 +78,7 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
         binding.baseHandler = this
         binding.handler = this
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         mapFrag = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFrag.getMapAsync(this)
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
@@ -81,18 +89,19 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
 
         setUpViews()
         driverMode()
+        viewModel.getRoute().observe(this, Observer {
 
+            if (it != null) {
+                polyline = mGoogleMap.addPolyline(it)
+            }
+        })
 
     }
 
 
     override fun onMapReady(googleMap: GoogleMap) {
         mGoogleMap = googleMap
-        googleMap.setMapStyle(
-            MapStyleOptions.loadRawResourceStyle(
-                this, R.raw.style_json
-            )
-        )
+        googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.style_json))
 
 
         //Initialize Google Play Services
@@ -113,6 +122,9 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
             buildGoogleApiClient()
             mGoogleMap.isMyLocationEnabled = true
         }
+
+
+        createPolyLine()
     }
 
     @Synchronized
@@ -149,16 +161,26 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
             mCurrLocationMarker!!.remove()
         }
 
-
-        //Place current location marker
         latLng = LatLng(location.latitude, location.longitude)
         latitude = location.latitude
         longitude = location.longitude
+        val dataBase: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val dbRef = dataBase.reference
+        val userId = mAuth.currentUser!!.uid
+        val currentUserDb = dbRef.child("available").child(userId)
+        currentUserDb.child("latitude").setValue(latitude)
+        currentUserDb.child("longitude").setValue(longitude)
+        val latLang = mapOf<String, Any>(
+            "latitude" to latitude,
+            "longitude" to longitude
+        )
+        currentUserDb.updateChildren(latLang)
         val markerOptions = MarkerOptions()
         markerOptions.title("Current Location")
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
         cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 15f)
         mGoogleMap.animateCamera(cameraUpdate)
+        System.out.print("My current latitude is $latitude")
 
 
     }
@@ -171,11 +193,7 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
         ) {
 
             // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    this,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                )
-            ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
 
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
@@ -187,7 +205,10 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
                         //Prompt the user once explanation has been shown
                         ActivityCompat.requestPermissions(
                             this@HomeActivity,
-                            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                            arrayOf(
+                                Manifest.permission.ACCESS_FINE_LOCATION,
+                                Manifest.permission.ACCESS_COARSE_LOCATION
+                            ),
                             HomeActivity.MY_PERMISSIONS_REQUEST_LOCATION
                         )
                     }
@@ -199,7 +220,7 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
                 // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(
                     this,
-                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION),
                     HomeActivity.MY_PERMISSIONS_REQUEST_LOCATION
                 )
             }
@@ -260,7 +281,10 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
             dialogAwaitingRequest.show()
             dialogAwaitingRequest.setOnDismissListener {
                 dialogRequestFound = DialogRequestFound(this)
-                dialogRequestFound.window!!.setBackgroundDrawable(ColorDrawable(Color.BLACK))
+                var window = dialogRequestFound.window
+                var wlp = window!!.attributes
+                wlp.gravity = Gravity.BOTTOM
+                window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 dialogRequestFound.setCanceledOnTouchOutside(false)
                 dialogRequestFound.show()
                 dialogRequestFound.setOnDismissListener {
@@ -437,7 +461,70 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
 
     }
 
+    fun createPolyLine() {
 
+        var mRideReference: DatabaseReference? = mDatabase!!.reference.child("ride_request")
+        mRideReference!!.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {}
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                dataSnapshot.children.forEach {
+                    val key: String = it.key.toString()
+                    var rides = it.getValue(CurrentRides::class.java)
+                    System.out.println("user key is $key")
+                    val referenceOne = mRideReference.child(key)
+                    val statusReference = mRideReference.child(key).child("rq_status")
+                    statusReference.addValueEventListener(object : ValueEventListener {
+                        override fun onCancelled(p0: DatabaseError) {
+
+                        }
+
+                        override fun onDataChange(p0: DataSnapshot) {
+                            System.out.println("My snapshot is ${p0.value}")
+                            if (p0.value!!.equals("accepted")) {
+                                var pickUpLat: Double = rides!!.pickup_lat!!.toDouble()
+                                var pickupLng: Double = rides.pickup_lng!!.toDouble()
+                                System.out.println("user pick up latitude  is $pickUpLat")
+                                System.out.println("user pick up longitude is $pickupLng")
+
+
+                                var riderPickLatLng = LatLng(pickUpLat, pickupLng)
+                                mGoogleMap.addMarker(MarkerOptions().position(riderPickLatLng).title("user pickup location"))
+                                val url = getDirectionsUrl(latLng, riderPickLatLng)
+                                viewModel.getRoute(url)
+                            }
+
+                        }
+
+
+                    })
+//                    referenceOne.addListenerForSingleValueEvent(object : ValueEventListener {
+//                        override fun onCancelled(p0: DatabaseError) {}
+//                        override fun onDataChange(snapshot: DataSnapshot) {
+//                            snapshot.children.forEach {
+//                                var rides = snapshot.getValue(CurrentRides::class.java)
+//
+//
+//                                if (it.child("rq_status").value!!.toString().equals("accepted")) {
+//                                    var pickUpLat: Double = rides!!.pickup_lat!!.toDouble()
+//                                    var pickupLng: Double = rides!!.pickup_lng!!.toDouble()
+//                                    System.out.println("user pick up latitude  is $pickUpLat")
+//                                    System.out.println("user pick up longitude is $pickupLng")
+//
+//
+//                                    var riderPickLatLng = LatLng(pickUpLat, pickupLng)
+//                                    mGoogleMap.addMarker(MarkerOptions().position(riderPickLatLng).title("user pickup location"));
+//
+//                                }
+//
+//
+//                            }
+//                        }
+//                    }
+                    //)
+                }
+            }
+        })
+    }
 }
 
 

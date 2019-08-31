@@ -31,23 +31,3 @@ fun Context.getDirectionsUrl(origin: LatLng, dest: LatLng): String {
     return "https://maps.googleapis.com/maps/api/directions/json?$parameters"
 }
 
-
-fun Context.getDirections(
-    driverCurrentLatLng: LatLng,
-    userPickupLatLng: LatLng,
-    userDestinationLatLang: LatLng
-): String {
-    val str_origin = "origin=" + driverCurrentLatLng.latitude + "," + driverCurrentLatLng.longitude
-
-    val str_pickup = "pickup" + userPickupLatLng.latitude + "," + userPickupLatLng.longitude
-
-    val str_dest = "destination=" + userDestinationLatLang.latitude + "," + userDestinationLatLang.longitude
-
-    val sensor = "sensor=false"
-
-    var placesApi = "key=" + getString(R.string.map_api_key)
-
-    val parameters = "$str_origin&$str_pickup$str_dest&$sensor&$placesApi"
-
-    return "https://maps.googleapis.com/maps/api/directions/json?$parameters"
-}

@@ -2,15 +2,18 @@ package com.fahim.mevronrider.views.dialogs
 
 import android.app.Dialog
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.View
 import android.view.Window
 import android.widget.Button
+import android.widget.RelativeLayout
 import com.fahim.mevronrider.R
 import com.fahim.mevronrider.models.CurrentRides
 import com.fahim.mevronrider.setUserKey
 import com.fahim.mevronrider.views.activity.HomeActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.dialog_request_found.*
 
 
 class DialogRequestFound(var c: HomeActivity) : Dialog(c) {
@@ -75,8 +78,32 @@ class DialogRequestFound(var c: HomeActivity) : Dialog(c) {
                                         override fun onDataChange(snapshot: DataSnapshot) {
                                             snapshot.children.forEach {
                                                 var rides = snapshot.getValue(CurrentRides::class.java)
-                                                //     tvLabel.text = ("passanger is ").plus(rides!!.ride_distance)
-                                                //         .plus(" away from your location")
+                                                tvLabel.text = ("passanger is ").plus(rides!!.ride_distance)
+                                                    .plus(" away from your location")
+
+
+                                                object : CountDownTimer(15000, 1000) {
+
+                                                    override fun onTick(millisUntilFinished: Long) {
+                                                        tvRemainingTime.text =
+                                                            "request timer: " + millisUntilFinished / 1000 + "sec"
+
+                                                    }
+
+                                                    override fun onFinish() {
+                                                        tvRemainingTime.text = "please try searching again"
+                                                        accept.visibility = View.GONE
+                                                        val params = RelativeLayout.LayoutParams(
+                                                            RelativeLayout.LayoutParams.WRAP_CONTENT,
+                                                            RelativeLayout.LayoutParams.WRAP_CONTENT
+                                                        )
+                                                        params.addRule(RelativeLayout.CENTER_HORIZONTAL)
+                                                        reject.layoutParams = params
+                                                    }
+
+                                                }.start()
+
+
                                             }
                                         }
 
@@ -113,27 +140,11 @@ class DialogRequestFound(var c: HomeActivity) : Dialog(c) {
                 override fun onDataChange(p0: DataSnapshot) {
                     val children = p0.children
                     children.forEach {
-
-
-                        //                        println("najish farooqui mahidpur " + it.key)
-//
-//                        println("najish farooqui mahidpur " + it.child("rider_id").value)
-//                        println("najish farooqui mahidpur " + it.child("rider_id").value)
-//
-//                        val myMap: Map<String, Any> = mapOf<String, Any>(
-//                            it.child("rq_status").toString() to "accepted",
-//                            it.child("driver_lat").toString() to c.latitude,
-//                            it.child("driver_lng").toString() to c.longitude
-//
-//                        )
-
                         mRideReference!!.child(it.key!!).child("driver_lat").setValue(c.latitude.toString())
                         mRideReference!!.child(it.key!!).child("driver_lng").setValue(c.longitude.toString())
                         mRideReference!!.child(it.key!!).child("driver_id").setValue(driverId)
                         mRideReference!!.child(it.key!!).child("rq_status").setValue("accepted")
-
                         dismiss()
-
                     }
                 }
 
