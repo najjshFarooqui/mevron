@@ -18,6 +18,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.fahim.mevronrider.R
+import com.fahim.mevronrider.databinding.ActivityHomeBinding
 import com.fahim.mevronrider.models.CurrentRides
 import com.fahim.mevronrider.models.LocationModel
 import com.fahim.mevronrider.utils.getDirectionsUrl
@@ -34,6 +35,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.nav_header.*
+import java.util.*
 
 
 class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
@@ -41,6 +43,7 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
     GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
     private lateinit var binding: ActivityHomeBinding
     lateinit var viewModel: HomeViewModel
+    lateinit var dottedLineViwModel: HomeViewModel
     private var polyline: Polyline? = null
     val TAG = "APPLLIGENT"
 
@@ -79,6 +82,7 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
         binding.baseHandler = this
         binding.handler = this
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        dottedLineViwModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         mapFrag = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFrag.getMapAsync(this)
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
@@ -92,9 +96,24 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
         viewModel.getRoute().observe(this, Observer {
 
             if (it != null) {
+
                 polyline = mGoogleMap.addPolyline(it)
+                var pattern = Arrays.asList(Dot(), Gap(20f), Dash(30f), Gap(20f))
+                polyline!!.pattern = pattern
+
             }
         })
+
+        dottedLineViwModel.getRoute().observe(this, Observer {
+
+            if (it != null) {
+
+                polyline = mGoogleMap.addPolyline(it)
+                var pattern = Arrays.asList(Dot(), Gap(20f), Dash(30f), Gap(20f))
+                polyline!!.pattern = pattern
+            }
+        })
+
 
     }
 
@@ -485,12 +504,19 @@ class HomeActivity : HomeBaseActivity(), HomeInterface, OnMapReadyCallback,
                                 var pickupLng: Double = rides.pickup_lng!!.toDouble()
                                 System.out.println("user pick up latitude  is $pickUpLat")
                                 System.out.println("user pick up longitude is $pickupLng")
+                                var dropLat: Double = rides.drop_lat!!.toDouble()
+                                var dropLang: Double = rides.drop_lng!!.toDouble()
 
 
                                 var riderPickLatLng = LatLng(pickUpLat, pickupLng)
+                                var dropLatLng = LatLng(dropLat, dropLang)
                                 mGoogleMap.addMarker(MarkerOptions().position(riderPickLatLng).title("user pickup location"))
                                 val url = getDirectionsUrl(latLng, riderPickLatLng)
+                                //var dropUrl = getDirectionsUrl(riderPickLatLng, dropLatLng)
                                 viewModel.getRoute(url)
+                                //dottedLineViwModel.getRoute(dropUrl)
+
+
                             }
 
                         }

@@ -53,6 +53,7 @@ class HomeViewModel(val con: Application) : AndroidViewModel(con) {
                     polylineOptions.addAll(points)
                     polylineOptions.width(PATH_WIDTH)
                     polylineOptions.color(Color.YELLOW)
+
                     uiThread {
                         routeLiveData.value = polylineOptions
                     }
